@@ -1,32 +1,42 @@
 # Adaptive Two-Stage Stochastic Routing
 
+Vehicle routing under **travel-time uncertainty** using a **two-stage stochastic optimization** framework: plan a nominal route in stage one, then adapt in stage two once uncertainty is realized.
+
 ---
 
 ## Overview
-This project studies **adaptive vehicle routing under travel-time uncertainty** using a **two-stage stochastic optimization framework**. A nominal route is planned in the first stage using baseline travel times, while the second stage adapts execution after uncertainty is realized through time-indexed traversal and waiting decisions.
 
-The goal is to minimize **expected total cost**, combining operating cost and penalties for time-window violations.
+The goal is to minimize **expected total cost** (operating cost + penalties for time-window violations) by combining:
 
----
+- **Stage 1** — Deterministic routing under nominal travel times
+- **Stage 2** — Scenario-dependent recourse with time-indexed traversal, waiting decisions, and early/late service penalties (constant, linear, or quadratic)
 
-## Model Summary
-- **Stage 1:** Deterministic routing under nominal travel times  
-- **Stage 2:** Scenario-dependent recourse with:
-  - Time-indexed traversal
-  - Waiting decisions
-  - Early/late service penalties (constant, linear, quadratic)
-- **Formulation:** Mixed-Integer Linear Program (MILP)
-- **Uncertainty:** Finite travel-time scenarios with known probabilities
+The model is formulated as a **Mixed-Integer Linear Program (MILP)** with finite travel-time scenarios and known probabilities.
 
 ---
 
-## Key Results
-Adaptive recourse consistently improves performance compared to non-adaptive execution.
+## Key results
 
-| Penalty Type | Improvement |
-|-------------|------------|
-| Constant    | ~20%       |
-| Linear      | ~20%       |
-| Quadratic   | ~20%       |
+Adaptive recourse consistently improves performance over non-adaptive execution:
 
-The benefit of adaptivity remains robust across different operating-cost levels.
+| Penalty type | Improvement |
+|--------------|-------------|
+| Constant     | ~20%        |
+| Linear       | ~20%        |
+| Quadratic    | ~20%        |
+
+The benefit of adaptivity holds across different operating-cost levels.
+
+---
+
+## Repo structure
+
+- **`Code/`** — Implementation and notebooks
+- **`Data/`** — Input data and scenarios
+- **`report.pdf`** — Full write-up and analysis
+
+---
+
+## Keywords
+
+Stochastic programming · Vehicle routing · MILP · Two-stage optimization · Time windows
